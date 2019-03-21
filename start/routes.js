@@ -18,4 +18,7 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
+Route.get('/tvshow', 'TvshowController.index');
+//Route.get('', 'JobController.userIndex');
+
 
