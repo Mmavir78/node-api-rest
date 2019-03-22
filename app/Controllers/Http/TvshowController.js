@@ -11,9 +11,9 @@ class TvshowController {
         return view.render('tvshow.index')
     }
 
-    async create({ request, response}) {
-        const tvshow = request.all();
+    async create({ request, response, session}) {
 
+        const tvshow = request.all();
         const posted = await Tvshow.create({
             titulo: tvshow.titulo,
             year: tvshow.year,
@@ -25,6 +25,24 @@ class TvshowController {
         session.flash({ message: 'Your TV show has been posted!' });
         return response.redirect('back');
     }
+
+    /*
+    async create({ request, response, session, auth}) {
+        const job = request.all();
+
+        console.log(auth.user.id);
+        
+        const posted = await Job.create({
+            title: job.title,
+            link: job.link,
+            description: job.description,
+            user_id: auth.user.id
+        });
+       
+        session.flash({ message: 'Your job has been posted!' });
+        return response.redirect('back');
+    }
+    */
 
 }
 

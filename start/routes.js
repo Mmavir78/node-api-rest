@@ -21,4 +21,4 @@ Route.on('/').render('welcome')
 Route.get('/tvshow', 'TvshowController.index');
 //Route.get('', 'JobController.userIndex');
 
-
+Route.post('/tvshow/crear', 'TvshowController.create');
