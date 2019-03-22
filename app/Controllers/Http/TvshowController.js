@@ -15,6 +15,7 @@ class TvshowController {
 
         const tvshow = request.all();
         const posted = await Tvshow.create({
+            title: 'Crear', 
             titulo: tvshow.titulo,
             year: tvshow.year,
             pais: tvshow.pais,
