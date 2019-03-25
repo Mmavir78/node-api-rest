@@ -56,7 +56,20 @@ class TvshowController {
         console.dir(params);
         const tvshow = await Tvshow.find(params.id);
         console.log("titulo "+tvshow.titulo)
-        return view.render('edit', { tv: tvshow });
+        return view.render('tvshow.edit', { tv: tvshow });
+    }
+
+    async update ({ response, request, session, params }) {
+        const tvshow = await Tvshow.find(params.id);
+
+        tvshow.titulo = request.all().titulo;
+        tvshow.year = request.all().year;
+        tvshow.pais = request.all().pais;
+
+        await tvshow.save();
+
+        session.flash({ message: 'Your tvshow has been updated. '});
+        return response.redirect('/');
     }
 
 }

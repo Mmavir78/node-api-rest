@@ -19,30 +19,30 @@ TVShow - Edit your TV Show
             {{ csrfField() }}
   
             <label for="title">Título</label>
-            <input type="text" name="title" value="{{ tv.titulo }}">
-            @if(hasErrorFor('title'))
+            <input type="text" name="titulo" value="{{ tv.titulo }}">
+            @if(hasErrorFor('titulo'))
                 <span>
-                    {{ getErrorFor('title') }}
+                    {{ getErrorFor('titulo') }}
                 </span>
             @endif
   
-            <label for="link">Link URL</label>
-            <input type="text" name="link" value="{{ job.link }}">
-            @if(hasErrorFor('link'))
+            <label for="link">Año</label>
+            <input type="text" name="year" value="{{ tv.year }}">
+            @if(hasErrorFor('year'))
                 <span>
-                    {{ getErrorFor('link') }}
+                    {{ getErrorFor('year') }}
                 </span>
             @endif
   
-            <label for="description">Description</label>
-            <input type="text" name="description" value="{{ job.description }}">
-            @if(hasErrorFor('description'))
+            <label for="description">País</label>
+            <input type="text" name="pais" value="{{ tv.pais }}">
+            @if(hasErrorFor('pais'))
                 <span>
-                    {{ getErrorFor('description') }}
+                    {{ getErrorFor('pais') }}
                 </span>
             @endif
   
-            <button type="submit">Update Job</button><br>
+            <button type="submit">Update TV Show</button><br>
         </form>
     </div>
 @endsection
