@@ -16,7 +16,7 @@ JobPostr - Post your Job
     @if(flashMessage('message'))
         <span>{{ flashMessage('message') }}</span>
     @endif
-        <form action="{{ route('TvshowController.create') }}" method="POST">
+        <form action="{{ route('TvshowController.store') }}" method="POST">
           {{ csrfField() }}
   
             <label for="title">Titulo</label>
@@ -48,6 +48,14 @@ JobPostr - Post your Job
             @if(hasErrorFor('temporada'))
                 <span>
                     {{ getErrorFor('temporada') }}
+                </span>
+            @endif
+
+            <label for="description">Poster</label>
+            <input type="text" name="poster">
+            @if(hasErrorFor('poster'))
+                <span>
+                    {{ getErrorFor('poster') }}
                 </span>
             @endif
     

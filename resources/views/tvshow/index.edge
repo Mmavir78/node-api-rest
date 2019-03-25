@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{ style('style') }}
+@layout('layouts.main')
 
-    <title>
-        Lista
-    </title>
-</head>
-<body>
-    <header>
-        <a href="/" id="logo">TV Show</a>
-        <nav>
-            <ul>
-                <li><a href="/tvshow">Tv Show</a></li>
-                    <li><a href="/tvshow/crear">Agregar TV Shows</a></li>
-            </ul>
-        </nav>
-    </header>
+@section('title')
+TV Show - Lista 
+@endsection
 
-    <div class="container">
-        @!section('content')
-    </div>
-</body>
-</html>
+@section('content')
+  <h1>All TV Shows</h1>
+    
+    @each(tv in tvshows)
+        <h5> hola </h5>
+        <div class="job-container">
+            <div class="blank">{{ tv.titulo }}</div>
+            <div class="job-info">
+                <p>{{ tv.titulo }}</p>
+                <p>{{ tv.year }}</p>
+                <a href="tvshow/edit/{{ tv.id }}">Editar</a>
+            </div>
+        </div>
+    @endeach
+
+@endsection

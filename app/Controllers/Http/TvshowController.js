@@ -6,14 +6,21 @@ class TvshowController {
 
     async index({view, response}) {
 
-        const tvshow = await Tvshow.all();
-        //console.dir(tvshow);
-        return view.render('tvshow.index')
+        //const tvshows = await Tvshow.all();
+       
+        let tvshows = await Tvshow.all();
+        tvshows = tvshows.toJSON()
+       
+        return view.render('tvshow.index', {tvshows})
     }
 
-    async create({ request, response, session}) {
+    async create({ view }) {
 
-        const tvshow = request.all();
+        //const tvshow = request.all();
+        //console.log(tvshow);
+        //var hola  = 'hola'
+        return view.render('tvshow.crear')
+        /*
         const posted = await Tvshow.create({
             title: 'Crear', 
             titulo: tvshow.titulo,
@@ -22,28 +29,35 @@ class TvshowController {
             poster: tvshow.poster,
             temporada: tvshow.temporada
         });
-       
-        session.flash({ message: 'Your TV show has been posted!' });
-        return response.redirect('back');
+       */
+        //session.flash({ message: 'Your TV show has been posted!' });
+        // return response.redirect('back');
     }
 
-    /*
-    async create({ request, response, session, auth}) {
-        const job = request.all();
+    async store({ request, response, session, auth}) {
 
-        console.log(auth.user.id);
-        
-        const posted = await Job.create({
-            title: job.title,
-            link: job.link,
-            description: job.description,
-            user_id: auth.user.id
+        const tvshow = request.all();
+
+        console.dir(tvshow);
+
+        const posted = await Tvshow.create({
+            titulo: tvshow.titulo,
+            year: tvshow.year,
+            pais: tvshow.pais,
+            poster: tvshow.poster,
+            temporadas: tvshow.temporada
         });
        
-        session.flash({ message: 'Your job has been posted!' });
+        session.flash({ message: 'Your tv show has been saved!' });
         return response.redirect('back');
     }
-    */
+
+    async edit({ params, view }) {
+        console.dir(params);
+        const tvshow = await Tvshow.find(params.id);
+        console.log("titulo "+tvshow.titulo)
+        return view.render('edit', { tv: tvshow });
+    }
 
 }
 
