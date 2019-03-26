@@ -72,6 +72,14 @@ class TvshowController {
         return response.redirect('/');
     }
 
+    async delete({ response, session, params}) {
+        const job = await Tvshow.find(params.id);
+
+        await Tvshow.delete();
+        session.flash({ message: 'Your Tvshow has been removed'});
+        return response.redirect('back');
+    }
+
 }
 
 module.exports = TvshowController

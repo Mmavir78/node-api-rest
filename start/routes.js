@@ -25,3 +25,4 @@ Route.get('/tvshow/crear', 'TvshowController.create').validator('CreateTvShow');
 Route.post('/tvshow/store', 'TvshowController.store');
 Route.get('/tvshow/edit/:id', 'TvshowController.edit');
 Route.post('/tvshow/update/:id', 'TvshowController.update').validator('CreateTvShow');
+Route.get('/tvshow/delete/:id', 'TvshowController.delete');
