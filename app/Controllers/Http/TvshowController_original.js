@@ -1,8 +1,6 @@
 'use strict'
 
-const Tvshow = use('App/Models/Tvshow');
-const CloudinaryService = use('App/Services/CloudinaryService');
-
+const Tvshow = use('App/Models/Tvshow')
 
 class TvshowController {
 
@@ -59,12 +57,11 @@ class TvshowController {
             session.flash({success: 'Successfully added post'});
             return response.redirect('back');
         } catch (e) {
-            console.dir(e);
             session.flash({error: 'Error Uploading Image'});
-            console.log('Error Uploading Image');
-            //return response.redirect('/')
+            return response.redirect('/')
         }
     }
+
 
     async edit({ params, view }) {
         //console.dir(params);

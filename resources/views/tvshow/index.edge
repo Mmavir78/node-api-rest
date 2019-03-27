@@ -8,9 +8,9 @@ TV Show - Lista
   <h1>All TV Shows</h1>
     
     @each(tv in tvshows)
-        <h5> hola {{ tv.poster }}/clasificacion.png <img src="{{ tv.poster }}" alt="" height="42" width="42"></h5>
+        <h5> hola </h5>
         <div class="job-container">
-            <div class="blank"><img src="../node-api-rest/public/files/dinero.png" alt="" height="42" width="42"></div>
+            <div class="blank"><img src="{{ tv.poster }}" alt="" height="100" width="100"></div>
             <div class="job-info">
                 <p>{{ tv.titulo }}</p>
                 <p>{{ tv.year }}</p>
