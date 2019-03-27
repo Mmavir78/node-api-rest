@@ -16,7 +16,7 @@ JobPostr - Post your Job
     @if(flashMessage('message'))
         <span>{{ flashMessage('message') }}</span>
     @endif
-        <form action="{{ route('TvshowController.store') }}" method="POST">
+        <form action="{{ route('TvshowController.store') }}" method="POST" enctype="multipart/form-data">
           {{ csrfField() }}
   
             <label for="title">Titulo</label>
@@ -52,7 +52,7 @@ JobPostr - Post your Job
             @endif
 
             <label for="description">Poster</label>
-            <input type="text" name="poster">
+            <input type="file" name="poster" multiple >
             @if(hasErrorFor('poster'))
                 <span>
                     {{ getErrorFor('poster') }}

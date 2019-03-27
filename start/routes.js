@@ -21,7 +21,7 @@ Route.on('/').render('welcome')
 Route.get('/tvshow', 'TvshowController.index');
 //Route.get('', 'JobController.userIndex');
 
-Route.get('/tvshow/crear', 'TvshowController.create').validator('CreateTvShow');
+Route.get('/tvshow/crear', 'TvshowController.create');
 Route.post('/tvshow/store', 'TvshowController.store');
 Route.get('/tvshow/edit/:id', 'TvshowController.edit');
 Route.post('/tvshow/update/:id', 'TvshowController.update').validator('CreateTvShow');

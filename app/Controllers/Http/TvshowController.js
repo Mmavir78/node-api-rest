@@ -16,46 +16,57 @@ class TvshowController {
 
     async create({ view }) {
 
-        //const tvshow = request.all();
-        //console.log(tvshow);
-        //var hola  = 'hola'
         return view.render('tvshow.crear')
-        /*
-        const posted = await Tvshow.create({
-            title: 'Crear', 
-            titulo: tvshow.titulo,
-            year: tvshow.year,
-            pais: tvshow.pais,
-            poster: tvshow.poster,
-            temporada: tvshow.temporada
-        });
-       */
-        //session.flash({ message: 'Your TV show has been posted!' });
-        // return response.redirect('back');
+        
     }
 
-    async store({ request, response, session, auth}) {
+    async store({ request, response, session}) {
 
         const tvshow = request.all();
 
-        console.dir(tvshow);
+        //const files = request.file('poster');
 
+        //console.dir(files)
+        //console.dir(tvshow);
+
+        let EDFile = request.file('poster');
+        //console.dir(EDFile);
+       
+        //console.log("name "+EDFile.clientName);
+        //C:\Users\mporras\node-api-rest\public\
+        //console.log(`${EDFile.clientName}`);
+        //console.log(`../public/files/${EDFile.clientName}`);
+        //Descomentar
+        EDFile.move(`./public/files/${EDFile.clientName}`);
+        /*, err => {
+            
+            if(err) {
+                console.log("error");
+                return res.status(500).send({ message : err })
+            } else {
+                res.redirect('/');
+            }
+        });
+        */
+       
         const posted = await Tvshow.create({
             titulo: tvshow.titulo,
             year: tvshow.year,
             pais: tvshow.pais,
-            poster: tvshow.poster,
+            poster: `./public/files/${EDFile.clientName}`,
             temporadas: tvshow.temporada
+
         });
        
         session.flash({ message: 'Your tv show has been saved!' });
         return response.redirect('back');
+        
     }
 
     async edit({ params, view }) {
-        console.dir(params);
+        //console.dir(params);
         const tvshow = await Tvshow.find(params.id);
-        console.log("titulo "+tvshow.titulo)
+        //console.log("titulo "+tvshow.titulo)
         return view.render('tvshow.edit', { tv: tvshow });
     }
 
