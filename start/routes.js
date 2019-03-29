@@ -26,3 +26,12 @@ Route.post('/tvshow/store', 'TvshowController.store');
 Route.get('/tvshow/edit/:id', 'TvshowController.edit');
 Route.post('/tvshow/update/:id', 'TvshowController.update').validator('CreateTvShow');
 Route.get('/tvshow/delete/:id', 'TvshowController.delete');
+
+//Autenticación:
+Route
+  .post('login', 'UserController.login')
+  .middleware('guest')
+
+Route
+  .get('users/:id', 'UserController.show')
+  .middleware('auth')
