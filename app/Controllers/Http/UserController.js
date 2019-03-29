@@ -8,6 +8,10 @@ class UserController {
         const user = await User.create(request.only(['username','email','password']));
 
         console.dir(auth);
+        if(!auth)
+            await auth.login(user);
+        else
+            console.log("si auth");
         //await auth.login(user);
         return response.redirect('/tvshow/crear');
     }
