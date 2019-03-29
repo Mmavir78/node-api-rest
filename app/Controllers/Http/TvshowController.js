@@ -3,15 +3,21 @@
 const Tvshow = use('App/Models/Tvshow');
 const CloudinaryService = use('App/Services/CloudinaryService');
 
+const Drive = use('Drive');
 
 class TvshowController {
 
     async index({view, response}) {
 
         //const tvshows = await Tvshow.all();
-       
+        
+        //const Env = use('Env');
+        //const amb = Env.get('APP_URL');
         let tvshows = await Tvshow.all();
-        tvshows = tvshows.toJSON()
+        //console.dir(tvshows);
+        //await Drive.get('relative-path-to-file')
+        //tvshows.archivo = await Drive.get(tvshows.poster);
+        tvshows = tvshows.toJSON();
        
         return view.render('tvshow.index', {tvshows})
     }
@@ -22,19 +28,19 @@ class TvshowController {
         
     }
 
-    /*
+/*    
     async store({ request, response, session}) {
 
         const tvshow = request.all();
         let EDFile = request.file('poster');
        
         EDFile.move(`./public/files/${EDFile.clientName}`);
-       
+       //const unicorn = await Drive.get('unicorn.jpg')
         const posted = await Tvshow.create({
             titulo: tvshow.titulo,
             year: tvshow.year,
             pais: tvshow.pais,
-            poster: `./public/files/${EDFile.clientName}`,
+            poster: './public/files/${EDFile.clientName}',
             temporadas: tvshow.temporada
 
         });
@@ -43,7 +49,7 @@ class TvshowController {
         return response.redirect('back');
         
     }
-    */
+  */  
     async store( {request, response, session}) {
         const tvshow = request.all();
         const file = request.file('poster');
@@ -59,13 +65,13 @@ class TvshowController {
             session.flash({success: 'Successfully added post'});
             return response.redirect('back');
         } catch (e) {
-            console.dir(e);
+            //console.dir(e);
             session.flash({error: 'Error Uploading Image'});
-            console.log('Error Uploading Image');
-            //return response.redirect('/')
+            //console.log('Error Uploading Image');
+            return response.redirect('back')
         }
     }
-
+    
     async edit({ params, view }) {
         //console.dir(params);
         const tvshow = await Tvshow.find(params.id);

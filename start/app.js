@@ -19,7 +19,9 @@ const providers = [
   '@adonisjs/shield/providers/ShieldProvider',
   '@adonisjs/session/providers/SessionProvider',
   '@adonisjs/auth/providers/AuthProvider',
-  '@adonisjs/validator/providers/ValidatorProvider'   // Librería validator
+  '@adonisjs/validator/providers/ValidatorProvider',   // Librería validator
+  '@adonisjs/drive/providers/DriveProvider',           // Driver provider
+  '@adonisjs/ally/providers/AllyProvider'              // Authenticate users using social websites like Facebook, Twitter, Google, Github etc
 ]
 
 /*

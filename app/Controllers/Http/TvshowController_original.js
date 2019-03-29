@@ -1,13 +1,16 @@
 'use strict'
 
-const Tvshow = use('App/Models/Tvshow')
+const Tvshow = use('App/Models/Tvshow');
+
+
 
 class TvshowController {
 
     async index({view, response}) {
-
+        //const Env = use('Env');
         //const tvshows = await Tvshow.all();
-       
+        //const amb = Env.get('APP_SECRET');
+        
         let tvshows = await Tvshow.all();
         tvshows = tvshows.toJSON()
        
