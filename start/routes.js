@@ -28,6 +28,7 @@ Route.post('/tvshow/update/:id', 'TvshowController.update').validator('CreateTvS
 Route.get('/tvshow/delete/:id', 'TvshowController.delete');
 
 //Autenticación:
+/*
 Route
   .post('login', 'UserController.login')
   .middleware('guest')
@@ -35,3 +36,13 @@ Route
 Route
   .get('users/:id', 'UserController.show')
   .middleware('auth')
+*/
+Route.on('/signup').render('auth.signup');
+Route.post('/signup', 'UserController.create').validator('CreateUser');
+Route.on('/login').render('auth.login');
+Route.get('/logout', async ({ auth, response }) => {
+    await auth.logout();
+    return response.redirect('/');
+});
+
+Route.post('/login', 'UserController.login').validator('LoginUser');
